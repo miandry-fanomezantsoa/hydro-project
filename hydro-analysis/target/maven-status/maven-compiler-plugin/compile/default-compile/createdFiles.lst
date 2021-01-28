@@ -1,0 +1,4 @@
+com\sustainabledev\hydro\analysis\SimpleDescriptiveAnalysis.class
+com\sustainabledev\hydro\analysis\HydroAnalysis.class
+module-info.class
+com\sustainabledev\hydro\analysis\DescriptiveAnalysis.class
