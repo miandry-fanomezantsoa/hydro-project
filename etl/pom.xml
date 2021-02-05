@@ -4,16 +4,16 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+  <artifactId>etl</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
   <parent>
     <artifactId>hydro-project</artifactId>
     <groupId>com.sustainabledev</groupId>
     <version>1.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>hydro-analysis</artifactId>
-  <version>1.0-SNAPSHOT</version>
-
-  <name>hydro-analysis</name>
+  <name>etl</name>
 
   <url></url>
 
@@ -37,6 +37,11 @@
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi</artifactId>
+      <version>5.0.0</version>
     </dependency>
   </dependencies>
 

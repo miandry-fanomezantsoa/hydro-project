@@ -1,2 +1,4 @@
+com\sustainabledev\utilities\data\Dataset.class
 module-info.class
+com\sustainabledev\utilities\data\Variable.class
 com\sustainabledev\utilities\exceptions\IllegalOperationException.class

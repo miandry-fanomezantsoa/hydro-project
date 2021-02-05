@@ -1,4 +1,4 @@
 --patch-module
-utilities=_
+com.sustainabledev.hydro.utilities=_
 --add-reads
-utilities=ALL-UNNAMED
+com.sustainabledev.hydro.utilities=ALL-UNNAMED

@@ -12,11 +12,12 @@
     <module>hydro-analysis</module>
     <module>utilities</module>
     <module>hydro-project-gui</module>
+      <module>etl</module>
   </modules>
 
   <name>hydro-project</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+
+  <url></url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -41,6 +42,11 @@
       <dependency>
         <groupId>com.sustainabledev</groupId>
         <artifactId>hydro-project-gui</artifactId>
+        <version>1.0-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>com.sustainabledev</groupId>
+        <artifactId>etl</artifactId>
         <version>1.0-SNAPSHOT</version>
       </dependency>
 

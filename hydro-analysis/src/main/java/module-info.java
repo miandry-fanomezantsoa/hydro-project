@@ -1,3 +1,3 @@
 open module hydro.analysis {
-    requires utilities;
+    requires com.sustainabledev.hydro.utilities;
 }
