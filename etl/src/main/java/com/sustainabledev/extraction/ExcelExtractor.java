@@ -8,16 +8,21 @@ import com.sustainabledev.utilities.utils.NumberUtils;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.util.DateFormatConverter;
+import org.apache.poi.util.LocaleUtil;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.text.DateFormat;
+import java.text.FieldPosition;
+import java.text.ParsePosition;
+import java.time.Instant;
+import java.time.format.DateTimeParseException;
 import java.time.temporal.ValueRange;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class ExcelExtractor implements Extractor {
@@ -36,7 +41,8 @@ public class ExcelExtractor implements Extractor {
                 switch (extension) {
                     case "xls":
                         // Extract dataset from Excel file
-                        // Create HSSFWorkbook for the file
+                        // Create HSSFWorkbook for the xls file
+                        LocaleUtil.setUserTimeZone(TimeZone.getTimeZone("GMT")); // Set POI default timezone to GMT
                         HSSFWorkbook workbook = new HSSFWorkbook(new FileInputStream(file));
                         List<Sheet> allSheets = getAllSheets(workbook);
 
@@ -99,22 +105,89 @@ public class ExcelExtractor implements Extractor {
             }
         }
         if(isHeader) { // If first row is the data header
-            for (int i = firstCol; i <= lastCol; i++) {
+            for (int i = firstCol; i <= lastCol; i++) { // Iterate on columns
                 Cell firstRowCurrentCell = firstRow.getCell(i);
                 if (firstRowCurrentCell != null) {
                     Variable variable = new Variable(firstRowCurrentCell.getStringCellValue());
-                    List<Float> data = new ArrayList<>();
+                    List<Float> numericData = new ArrayList<>();
+                    List<Instant> dateTimesData = new ArrayList<>();
+                    boolean isDateTimeFormat = false;
                     int firstIndex = firstRowNum + 1;
                     int lastIndex = s.getLastRowNum();
-                    for (int j = firstIndex; j <= lastIndex; j++) {
+                    boolean unknownVariableType = true;
+                    for (int j = firstIndex; j <= lastIndex; j++) { // Iterate on rows
                         Row row = s.getRow(j);
+                        if (row == null) continue;
                         Cell cell = row.getCell(i);
-                        if(cell != null) {
-                            if (cell.getCellType() == CellType.BLANK) break;
-                            data.add(Float.valueOf(NumberUtils.formatToFloatingPoint(3, cell.getNumericCellValue())));
+
+                        if (cell == null || cell.getCellType() == CellType.BLANK) { // Blank cell
+                            // Verify all cells in this row are blank
+                            boolean blankRow = true;
+                            for (int k = firstCol; k <= lastCol; k++) {
+                                Cell kCell = row.getCell(k);
+                                if (kCell != null && kCell.getCellType() != CellType.BLANK) {
+                                    blankRow = false;
+                                }
+                            }
+                            if (blankRow) { // all cells in the row are blank
+                                break;
+                            } else {
+                                if (DateUtil.isCellDateFormatted(cell)) {
+                                    dateTimesData.add(null);
+                                } else {
+                                    numericData.add(null);
+                                }
+                            }
+                        } else if (cell.getCellType() == CellType.NUMERIC) { // Numeric data
+                            unknownVariableType = false;
+                            if (DateUtil.isCellDateFormatted(cell)) {
+                                dateTimesData.add(cell.getDateCellValue().toInstant());
+                                isDateTimeFormat = true;
+                            } else {
+                                numericData.add(Float.valueOf(NumberUtils.formatToFloatingPoint(3, cell.getNumericCellValue())));
+                            }
+                        } else { // Invalid data format
+                            if(unknownVariableType) { // The type of the column is still unknown
+                                // Cell type detection
+                                String cellType = "";
+                                for (int t = j + 1; t <= lastIndex; t++) {
+                                    if(! unknownVariableType) break;
+                                    Row tRow = s.getRow(t);
+                                    Cell tCell = tRow.getCell(i);
+                                    if (tCell != null) {
+                                        if (DateUtil.isCellDateFormatted(tCell)) {
+                                            cellType = "datetime";
+                                            unknownVariableType = false;
+                                        } else if (tCell.getCellType() == CellType.NUMERIC) {
+                                            cellType = "number";
+                                            unknownVariableType = false;
+                                        }
+                                    }
+                                }
+
+                                switch (cellType) {
+                                    case "datetime":
+                                        throw new DateTimeParseException("The data format is unrecognized by the formatter", cell.getStringCellValue(), 0);
+                                    case "number":
+                                        numericData.add(Float.NaN);
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            } else { // the data type is already known
+                                if(isDateTimeFormat) { // The variable is of type Instant
+                                    throw new DateTimeParseException("The data format is unrecognized by the formatter", cell.getStringCellValue(), 0);
+                                } else { // The variable is of type Float
+                                    numericData.add(Float.NaN);
+                                }
+                            }
                         }
                     }
-                    variable.setData(data);
+                    if (isDateTimeFormat) { // The column (so the variable) is datetime
+                        variable.setData(dateTimesData);
+                    } else { // The column (so the variable) is numeric data
+                        variable.setData(numericData);
+                    }
                     variables.add(variable);
                 }
             }

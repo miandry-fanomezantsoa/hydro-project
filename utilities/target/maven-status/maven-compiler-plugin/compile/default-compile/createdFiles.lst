@@ -1,4 +1,7 @@
+com\sustainabledev\utilities\utils\FileUtils.class
 com\sustainabledev\utilities\data\Dataset.class
 module-info.class
+com\sustainabledev\utilities\exceptions\FileFormatException.class
 com\sustainabledev\utilities\data\Variable.class
 com\sustainabledev\utilities\exceptions\IllegalOperationException.class
+com\sustainabledev\utilities\utils\NumberUtils.class

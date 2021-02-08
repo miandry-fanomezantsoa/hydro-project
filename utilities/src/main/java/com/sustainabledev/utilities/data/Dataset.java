@@ -1,5 +1,7 @@
 package com.sustainabledev.utilities.data;
 
+
+
 import java.util.List;
 
 public class Dataset {
@@ -23,6 +25,7 @@ public class Dataset {
         this.variables = variables;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this.variables.size() != ((Dataset)o).getVariables().size()) return false;
@@ -37,5 +40,14 @@ public class Dataset {
             ++i;
         }
         return result;
+    }
+
+    @Override
+    public String toString() {
+        String repr = "";
+        for (Variable variable : this.variables) {
+            repr += variable.getName() + " => " + variable.getData() + "\n";
+        }
+        return repr;
     }
 }

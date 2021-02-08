@@ -12,7 +12,7 @@
     <module>hydro-analysis</module>
     <module>utilities</module>
     <module>hydro-project-gui</module>
-      <module>etl</module>
+    <module>etl</module>
   </modules>
 
   <name>hydro-project</name>

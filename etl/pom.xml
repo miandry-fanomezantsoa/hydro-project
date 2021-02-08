@@ -24,10 +24,13 @@
   </properties>
 
   <dependencies>
+    <!-- Modules internes -->
     <dependency>
       <groupId>com.sustainabledev</groupId>
       <artifactId>utilities</artifactId>
     </dependency>
+
+    <!-- Modules externes -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
