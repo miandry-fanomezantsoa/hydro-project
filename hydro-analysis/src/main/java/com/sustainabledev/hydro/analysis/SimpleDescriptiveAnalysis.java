@@ -6,29 +6,40 @@ import com.sustainabledev.utilities.utils.NumberUtils;
 import static java.lang.Math.*;
 import java.text.DecimalFormat;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 import java.util.stream.Stream;
 
 public class SimpleDescriptiveAnalysis implements DescriptiveAnalysis {
 
-    private Float[] data;
+    private List<? extends Number> data;
     private static final DecimalFormat HYDRO_FORMAT =
             new DecimalFormat("0.000");
 
-    public SimpleDescriptiveAnalysis(Float[] d) {
+    public SimpleDescriptiveAnalysis(List<? extends Number> d) {
         this.data = d;
     }
 
-    public void of(Float[] data) {
+    public void of(List<? extends Number> data) {
         this.data = data;
     }
 
-    public Float[] getData() {
+    public List<? extends Number> getData() {
         return data;
     }
 
-    public void setData(Float[] data) {
+    public void setData(List<? extends Number> data) {
         this.data = data;
+    }
+
+    private int floatComparator(Number n1, Number n2) {
+        if (n1.floatValue() < n2.floatValue()) {
+            return -1;
+        } else if (n1.floatValue() == n2.floatValue()) {
+            return 0;
+        } else {
+            return 1;
+        }
     }
 
     @Override
@@ -37,7 +48,7 @@ public class SimpleDescriptiveAnalysis implements DescriptiveAnalysis {
             throw new IllegalOperationException("The dataset is empty");
         }
         return Float.valueOf(NumberUtils.formatToFloatingPoint(3,
-                Arrays.stream(data).max(Float::compare).get()));
+                data.stream().max(this::floatComparator).get()));
     }
 
     @Override
@@ -46,7 +57,7 @@ public class SimpleDescriptiveAnalysis implements DescriptiveAnalysis {
             throw new IllegalOperationException("The dataset is empty");
         }
         return Float.valueOf(NumberUtils.formatToFloatingPoint(3,
-                Arrays.stream(data).min(Float::compare).get()));
+                data.stream().min(this::floatComparator).get()));
     }
 
     @Override
@@ -54,9 +65,9 @@ public class SimpleDescriptiveAnalysis implements DescriptiveAnalysis {
         if(data == null) {
             throw new IllegalOperationException("The dataset is empty");
         }
-        Stream<Float> stream = Arrays.stream(data);
+        Stream<? extends  Number> stream = data.stream();
         return Float.valueOf(NumberUtils.formatToFloatingPoint(3,
-                getSum() / Integer.valueOf(this.data.length).floatValue()));
+                getSum() / Integer.valueOf(this.data.size()).floatValue()));
     }
 
     @Override
@@ -64,7 +75,7 @@ public class SimpleDescriptiveAnalysis implements DescriptiveAnalysis {
         if(data == null) {
             throw new IllegalOperationException("The dataset is empty");
         }
-        Stream<Float> stream = Arrays.stream(data);
+        Stream<? extends Number> stream = data.stream();
         return Float.valueOf(NumberUtils.formatToFloatingPoint(3,
                 stream.mapToDouble(Number::doubleValue).sum()));
     }
@@ -75,8 +86,8 @@ public class SimpleDescriptiveAnalysis implements DescriptiveAnalysis {
             throw new IllegalOperationException("The dataset is empty");
         }
         final Float mean = getMean();
-        Number se = Arrays.stream(this.data).map(e -> pow((e - mean), 2)).
-                mapToDouble(Number::doubleValue).sum() / this.data.length;
+        Number se = data.stream().map(e -> pow(((Float)e - mean), 2)).
+                mapToDouble(Number::doubleValue).sum() / this.data.size();
         return Float.valueOf(NumberUtils.formatToFloatingPoint(3, se));
     }
 

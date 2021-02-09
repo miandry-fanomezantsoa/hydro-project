@@ -2,8 +2,8 @@ package com.sustainabledev.extraction;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.sustainabledev.utilities.data.Dataset;
-import com.sustainabledev.utilities.data.Variable;
+import com.sustainabledev.hydro.data.Dataset;
+import com.sustainabledev.hydro.data.Variable;
 import com.sustainabledev.utilities.exceptions.FileFormatException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;

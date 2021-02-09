@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.sustainabledev.hydro.analysis.DescriptiveAnalysisTest" time="0.171" tests="8" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.sustainabledev.hydro.analysis.DescriptiveAnalysisTest" time="0.186" tests="8" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -17,7 +17,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="FR"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-11.0.9\bin"/>
-    <property name="sun.java.command" value="org.apache.maven.surefire.booter.ForkedBooter C:\Users\maki-\AppData\Local\Temp\surefire1290762652849333030 2021-02-08T13-29-09_375-jvmRun1 surefire10625949008326339106tmp surefire_015684168457049738528tmp"/>
+    <property name="sun.java.command" value="org.apache.maven.surefire.booter.ForkedBooter C:\Users\maki-\AppData\Local\Temp\surefire8652803401972370217 2021-02-08T15-47-58_757-jvmRun1 surefire17351918041802839613tmp surefire_010224823600578322081tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="D:\CodeLab\Java\hydro-project\hydro-analysis\target\test-classes;C:\Users\maki-\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.7.0\junit-jupiter-api-5.7.0.jar;C:\Users\maki-\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\maki-\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\maki-\.m2\repository\org\junit\platform\junit-platform-commons\1.7.0\junit-platform-commons-1.7.0.jar;C:\Users\maki-\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.7.0\junit-jupiter-engine-5.7.0.jar;C:\Users\maki-\.m2\repository\org\junit\platform\junit-platform-engine\1.7.0\junit-platform-engine-1.7.0.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -62,12 +62,12 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="55.0"/>
   </properties>
-  <testcase name="minValueOfASerie" classname="com.sustainabledev.hydro.analysis.DescriptiveAnalysisTest" time="0.077"/>
-  <testcase name="maxValueOfASerie" classname="com.sustainabledev.hydro.analysis.DescriptiveAnalysisTest" time="0.017"/>
-  <testcase name="varianceValueOfASerie" classname="com.sustainabledev.hydro.analysis.DescriptiveAnalysisTest" time="0.011"/>
-  <testcase name="stdValueOfASerie" classname="com.sustainabledev.hydro.analysis.DescriptiveAnalysisTest" time="0.007"/>
-  <testcase name="maxValueOfASerieIsUnique" classname="com.sustainabledev.hydro.analysis.DescriptiveAnalysisTest" time="0.006"/>
+  <testcase name="minValueOfASerie" classname="com.sustainabledev.hydro.analysis.DescriptiveAnalysisTest" time="0.117"/>
+  <testcase name="maxValueOfASerie" classname="com.sustainabledev.hydro.analysis.DescriptiveAnalysisTest" time="0.004"/>
+  <testcase name="varianceValueOfASerie" classname="com.sustainabledev.hydro.analysis.DescriptiveAnalysisTest" time="0.009"/>
+  <testcase name="stdValueOfASerie" classname="com.sustainabledev.hydro.analysis.DescriptiveAnalysisTest" time="0.003"/>
+  <testcase name="maxValueOfASerieIsUnique" classname="com.sustainabledev.hydro.analysis.DescriptiveAnalysisTest" time="0.004"/>
   <testcase name="meanValueOfASerie" classname="com.sustainabledev.hydro.analysis.DescriptiveAnalysisTest" time="0.002"/>
-  <testcase name="shouldThrowExceptionWithoutDataSet" classname="com.sustainabledev.hydro.analysis.DescriptiveAnalysisTest" time="0.005"/>
-  <testcase name="sumValueOfASerie" classname="com.sustainabledev.hydro.analysis.DescriptiveAnalysisTest" time="0.002"/>
+  <testcase name="shouldThrowExceptionWithoutDataSet" classname="com.sustainabledev.hydro.analysis.DescriptiveAnalysisTest" time="0.004"/>
+  <testcase name="sumValueOfASerie" classname="com.sustainabledev.hydro.analysis.DescriptiveAnalysisTest" time="0.003"/>
 </testsuite>

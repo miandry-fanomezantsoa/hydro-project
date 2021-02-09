@@ -29,6 +29,10 @@
       <groupId>com.sustainabledev</groupId>
       <artifactId>utilities</artifactId>
     </dependency>
+    <dependency>
+      <groupId>com.sustainabledev</groupId>
+      <artifactId>hydro-analysis</artifactId>
+    </dependency>
 
     <!-- Modules externes -->
     <dependency>
@@ -46,6 +50,10 @@
       <artifactId>poi</artifactId>
       <version>5.0.0</version>
     </dependency>
+      <dependency>
+          <groupId>com.sustainabledev</groupId>
+          <artifactId>hydro-analysis</artifactId>
+      </dependency>
   </dependencies>
 
   <build>

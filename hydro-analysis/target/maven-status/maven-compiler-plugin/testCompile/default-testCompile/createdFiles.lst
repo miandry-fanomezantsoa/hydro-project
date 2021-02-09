@@ -1,2 +1,4 @@
 com\sustainabledev\hydro\analysis\DescriptiveAnalysisTest.class
 com\sustainabledev\hydro\analysis\HydroAnalysisTest.class
+com\sustainabledev\hydro\data\DatasetTest$FillNullValues.class
+com\sustainabledev\hydro\data\DatasetTest.class

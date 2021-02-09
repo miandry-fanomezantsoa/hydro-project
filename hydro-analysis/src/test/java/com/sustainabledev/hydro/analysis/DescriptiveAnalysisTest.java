@@ -6,6 +6,7 @@ import com.sustainabledev.utilities.exceptions.IllegalOperationException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 @DisplayName("Descriptive Analysis")
@@ -34,7 +35,7 @@ public class DescriptiveAnalysisTest {
     @Test
     @DisplayName("Aggregation operation give single value")
     void maxValueOfASerieIsUnique() {
-        Float[] data = {10.5f, 124.2f, 30f, 11.4f, 124.2f};
+        List<Number> data = Arrays.asList(10.5f, 124.2f, 30f, 11.4f, 124.2f);
 
         DescriptiveAnalysis analysis = new SimpleDescriptiveAnalysis(data);
         List<Float> maxValues = List.of(analysis.getMax());
@@ -58,8 +59,8 @@ public class DescriptiveAnalysisTest {
     @DisplayName("Finding max value return maximum value of series of data")
     void maxValueOfASerie() {
         // Input data
-        Float[] data1 = {1.5f, 3.6f, 3.61f, 0.12f};
-        Float[] data2 = {10.5f, 124.2f, 30f, 11.4f, 124.2f};
+        List<Number> data1 = Arrays.asList(1.5f, 3.6f, 3.61f, 0.12f);
+        List<Number> data2 = Arrays.asList(10.5f, 124.2f, 30f, 11.4f, 124.2f);
 
         DescriptiveAnalysis analysis1 = new SimpleDescriptiveAnalysis(data1);
         DescriptiveAnalysis analysis2 = new SimpleDescriptiveAnalysis(data2);
@@ -74,8 +75,8 @@ public class DescriptiveAnalysisTest {
     @DisplayName("Finding min value return minimum value of series of data")
     void minValueOfASerie() {
         // Input data
-        Float[] data1 = {1.5f, 3.6f, 3.61f, 0.12f};
-        Float[] data2 = {10.5f, 124.2f, 30f, 11.4f, 124.2f};
+        List<Number> data1 = Arrays.asList(1.5f, 3.6f, 3.61f, 0.12f);
+        List<Number> data2 = Arrays.asList(10.5f, 124.2f, 30f, 11.4f, 124.2f);
 
         DescriptiveAnalysis analysis1 = new SimpleDescriptiveAnalysis(data1);
         DescriptiveAnalysis analysis2 = new SimpleDescriptiveAnalysis(data2);
@@ -90,8 +91,8 @@ public class DescriptiveAnalysisTest {
     @DisplayName("Computing sum value return the sum value of series of data")
     void sumValueOfASerie() {
         // Input data
-        Float[] data1 = {1.5f, 3.6f, 3.61f, 0.12f};
-        Float[] data2 = {10.516f, 124.234f, 30f, 11.489f, 124.2f};
+        List<Number> data1 = Arrays.asList(1.5f, 3.6f, 3.61f, 0.12f);
+        List<Number> data2 = Arrays.asList(10.516f, 124.234f, 30f, 11.489f, 124.2f);
 
         DescriptiveAnalysis analysis1 = new SimpleDescriptiveAnalysis(data1);
         DescriptiveAnalysis analysis2 = new SimpleDescriptiveAnalysis(data2);
@@ -106,8 +107,8 @@ public class DescriptiveAnalysisTest {
     @DisplayName("Computing mean value return the mean value of series of data")
     void meanValueOfASerie() {
         // Input data
-        Float[] data1 = {1.5f, 3.6f, 3.61f, 0.12f};
-        Float[] data2 = {10.516f, 124.234f, 30f, 11.489f, 124.2f};
+        List<Number> data1 = Arrays.asList(1.5f, 3.6f, 3.61f, 0.12f);
+        List<Number> data2 = Arrays.asList(10.516f, 124.234f, 30f, 11.489f, 124.2f);
 
         DescriptiveAnalysis analysis1 = new SimpleDescriptiveAnalysis(data1);
         DescriptiveAnalysis analysis2 = new SimpleDescriptiveAnalysis(data2);
@@ -123,8 +124,8 @@ public class DescriptiveAnalysisTest {
             "value of series of data")
     void varianceValueOfASerie() {
         // Input data
-        Float[] data1 = {1.5f, 3.6f, 3.61f, 0.12f};
-        Float[] data2 = {10.516f, 124.234f, 30f, 11.489f, 124.2f};
+        List<Number> data1 = Arrays.asList(1.5f, 3.6f, 3.61f, 0.12f);
+        List<Number> data2 = Arrays.asList(10.516f, 124.234f, 30f, 11.489f, 124.2f);
 
         DescriptiveAnalysis analysis1 = new SimpleDescriptiveAnalysis(data1);
         DescriptiveAnalysis analysis2 = new SimpleDescriptiveAnalysis(data2);
@@ -140,8 +141,8 @@ public class DescriptiveAnalysisTest {
             "standard deviation value of series of data")
     void stdValueOfASerie() {
         // Input data
-        Float[] data1 = {1.5f, 3.6f, 3.61f, 0.12f};
-        Float[] data2 = {10.516f, 124.234f, 30f, 11.489f, 124.2f};
+        List<Number> data1 = Arrays.asList(1.5f, 3.6f, 3.61f, 0.12f);
+        List<Number> data2 = Arrays.asList(10.516f, 124.234f, 30f, 11.489f, 124.2f);
 
         DescriptiveAnalysis analysis1 = new SimpleDescriptiveAnalysis(data1);
         DescriptiveAnalysis analysis2 = new SimpleDescriptiveAnalysis(data2);

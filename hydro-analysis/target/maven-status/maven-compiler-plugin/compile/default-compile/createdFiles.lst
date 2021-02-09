@@ -1,4 +1,7 @@
-com\sustainabledev\hydro\analysis\SimpleDescriptiveAnalysis.class
 com\sustainabledev\hydro\analysis\HydroAnalysis.class
+com\sustainabledev\hydro\data\Variable.class
+com\sustainabledev\hydro\data\Dataset$Filler.class
 module-info.class
+com\sustainabledev\hydro\data\Dataset.class
 com\sustainabledev\hydro\analysis\DescriptiveAnalysis.class
+com\sustainabledev\hydro\analysis\SimpleDescriptiveAnalysis.class

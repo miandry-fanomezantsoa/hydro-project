@@ -1,4 +1,4 @@
-package com.sustainabledev.utilities.data;
+package com.sustainabledev.hydro.data;
 
 
 
@@ -8,6 +8,12 @@ public class Dataset {
 
     List<Variable> variables;
     int size;
+
+    @FunctionalInterface
+    public static interface Filler<T> {
+
+        List<Variable> process(Dataset d);
+    }
 
     public Dataset() {
         this.variables = null;
@@ -24,7 +30,6 @@ public class Dataset {
     public void setVariables(List<Variable> variables) {
         this.variables = variables;
     }
-
 
     @Override
     public boolean equals(Object o) {
@@ -50,4 +55,26 @@ public class Dataset {
         }
         return repr;
     }
+
+    /**
+     * Filling null values of all data contained in the variables inside this
+     * dataset.
+     * @return this dataset
+     */
+    public Dataset fillNullValues(Filler<?> f) {
+        this.setVariables(f.process(this));
+        return this;
+    }
+
+    /**
+     * Correct invalid formatted data by replacing them with new valid values.
+     * @param f a filler that generate a valid value
+     * @return new Dataset having no invalid data
+     */
+    public Dataset correctInvalidData(Filler<?> f) {
+        this.setVariables(f.process(this));
+        return this;
+    }
+
+
 }
